@@ -1,0 +1,139 @@
+<!-- 2nd_floor_blueprint.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -15 55 145" width="1200" height="2900" style="background-color: #0d1b2a; font-family: 'Courier New', monospace;">
+  <defs>
+    <pattern id="grid2" width="1" height="1" patternUnits="userSpaceOnUse">
+      <path d="M 1 0 L 0 0 0 1" fill="none" stroke="#1b2a4a" stroke-width="0.04"/>
+    </pattern>
+    <pattern id="majorGrid2" width="5" height="5" patternUnits="userSpaceOnUse">
+      <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#283d6a" stroke-width="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect x="-5" y="-15" width="55" height="145" fill="url(#grid2)"/>
+  <rect x="-5" y="-15" width="55" height="145" fill="url(#majorGrid2)"/>
+
+  <!-- Title Block -->
+  <text x="0" y="-11" fill="#00e5ff" font-size="1.5" font-weight="bold">SECOND FLOOR PLAN (OPEN CONCEPT)</text>
+  <text x="0" y="-8.8" fill="#88a0c0" font-size="0.75">EXT: 25' x 71' AT X: 1.5, Y: 39.0 TO 110.0 | FRONT FOYER ENTRY | EXPANDED OPEN LIVING | SPLIT BATH 2 &amp; BED C</text>
+
+  <!-- Driveway Reference Surface -->
+  <rect x="31" y="34" width="12" height="86" fill="#14243b" stroke="#88a0c0" stroke-width="0.15" stroke-dasharray="0.4,0.4"/>
+  <line x1="31" y1="34" x2="43" y2="34" stroke="#88a0c0" stroke-width="0.33"/>
+
+  <!-- Exterior Shell (25' x 71' at X: 1.5 to 26.5, Y: 39.0 to 110.0) -->
+  <rect x="1.5" y="39" width="25" height="71" fill="none" stroke="#4da6ff" stroke-width="0.5"/>
+
+  <!-- ================= FRONT PORCH / BALCONY RECESS (X: 18.5 to 26.5, Y: 102.0 to 110.0) ================= -->
+  <rect x="18.5" y="102" width="8" height="8" fill="#14243b" stroke="#00e5ff" stroke-width="0.2" stroke-dasharray="0.3,0.3"/>
+  <text x="19.5" y="106.5" fill="#4da6ff" font-size="0.75" font-weight="bold">FRONT PORCH</text>
+  <text x="19.5" y="107.7" fill="#88a0c0" font-size="0.5">(Balcony Railing)</text>
+  <line x1="18.5" y1="102" x2="18.5" y2="109.5" stroke="#ffffff" stroke-width="0.33"/>
+  <line x1="18.5" y1="102" x2="26.0" y2="102" stroke="#ffffff" stroke-width="0.33"/>
+
+  <!-- ================= UPPER BACK PORCH & REAR STAIR HEAD (Y = 39.5 to 57.0) ================= -->
+  <!-- Rear Stairwell Enclosure (Arrival from Floor 1: X: 2.0 to 11.0, Y: 39.5 to 45.0) -->
+  <rect x="2.0" y="39.5" width="9.0" height="5.5" fill="none" stroke="#ffffff" stroke-width="0.33"/>
+  <line x1="9.5" y1="39.5" x2="9.5" y2="45.0" stroke="#ffffff" stroke-width="0.12"/>
+  <line x1="8.3" y1="39.5" x2="8.3" y2="45.0" stroke="#ffffff" stroke-width="0.12"/>
+  <line x1="7.1" y1="39.5" x2="7.1" y2="45.0" stroke="#ffffff" stroke-width="0.12"/>
+  <line x1="5.9" y1="39.5" x2="5.9" y2="45.0" stroke="#ffffff" stroke-width="0.12"/>
+  <line x1="4.7" y1="39.5" x2="4.7" y2="45.0" stroke="#ffffff" stroke-width="0.12"/>
+  <line x1="3.5" y1="39.5" x2="3.5" y2="45.0" stroke="#ffffff" stroke-width="0.12"/>
+  <text x="3.5" y="42.5" fill="#ffffff" font-size="0.65" font-weight="bold">STAIR HEAD (DN)</text>
+
+  <!-- Upper Back Porch Open Deck -->
+  <path d="M 11 39.5 L 26 39.5 L 26 57 L 11 57 L 2.0 57 L 2.0 45.0 L 11 45.0 Z" fill="#14243b" stroke="#00e5ff" stroke-width="0.15" stroke-dasharray="0.3,0.3"/>
+  <text x="14.5" y="48.5" fill="#4da6ff" font-size="1.1" font-weight="bold">EXTENDED UPPER PORCH</text>
+
+  <!-- Partition Wall Between Back Porch and Interior (Y = 57.0) -->
+  <line x1="2.0" y1="57" x2="26.0" y2="57" stroke="#ffffff" stroke-width="0.33"/>
+
+  <!-- ================= SPLIT BATH 2, BEDROOM C & UPPER KITCHEN (Y = 57.0 to 74.5) ================= -->
+  <!-- Split Bath 2 (Rear-Left: X: 2.0 to 11.0, Y: 57.0 to 65.75) -->
+  <rect x="2.0" y="57" width="9" height="8.75" fill="#0d1b2a" stroke="#ffffff" stroke-width="0.33"/>
+  <text x="4.5" y="62" fill="#ffffff" font-size="0.85" font-weight="bold">BATH 2</text>
+  <text x="3.5" y="63.5" fill="#88a0c0" font-size="0.5">(8'-9" Length)</text>
+
+  <!-- Equal Split Dividing Wall (Y = 65.75) -->
+  <line x1="2.0" y1="65.75" x2="11.0" y2="65.75" stroke="#ffffff" stroke-width="0.33"/>
+
+  <!-- Split Bedroom C (Mid-Left: X: 2.0 to 11.0, Y: 65.75 to 74.5) -->
+  <rect x="2.0" y="65.75" width="9" height="8.75" fill="#0d1b2a" stroke="#ffffff" stroke-width="0.33"/>
+  <text x="3.5" y="70.5" fill="#ffffff" font-size="0.85" font-weight="bold">BEDROOM C</text>
+  <text x="3.5" y="72" fill="#88a0c0" font-size="0.5">(8'-9" Length)</text>
+
+  <!-- Upper Kitchen / Dining Area (X: 11.0 to 26.0, Y: 57.0 to 74.5) -->
+  <line x1="11.0" y1="57" x2="11.0" y2="74.5" stroke="#ffffff" stroke-width="0.33"/>
+  <text x="14.5" y="66" fill="#ffffff" font-size="1.0" font-weight="bold">2ND FL KITCHEN / DINING</text>
+  <line x1="2.0" y1="74.5" x2="26.0" y2="74.5" stroke="#ffffff" stroke-width="0.33"/>
+
+  <!-- ================= OPEN FLOOR PLAN LIVING ROOM (Y = 74.5 to 94.0) ================= -->
+  <!-- Seamless, open space (No Bedroom B partition wall) -->
+  <rect x="2.0" y="74.5" width="24.0" height="19.5" fill="#112233" fill-opacity="0.25" stroke="none"/>
+  <text x="7.5" y="84" fill="#00e5ff" font-size="1.3" font-weight="bold">OPEN CONCEPT LIVING ROOM</text>
+  <text x="10.5" y="86.5" fill="#88a0c0" font-size="0.65">(Full 24'-0" Width • Open Floor Plan)</text>
+
+  <!-- ================= FRONT SECTION: ENTRY FOYER, MASTER SUITE & EN-SUITE (Y = 94.0 to 109.5) ================= -->
+  <!-- Front Interior Stair Enclosure (Front-Left: X: 2.0 to 7.0, Y: 94.0 to 109.5) -->
+  <rect x="2.0" y="94" width="5.0" height="15.5" fill="none" stroke="#ffffff" stroke-width="0.33"/>
+  <text x="2.5" y="98.5" fill="#00e5ff" font-size="0.55" font-weight="bold">STAIRWELL</text>
+  <text x="2.5" y="100.2" fill="#88a0c0" font-size="0.45">(From 1st Fl)</text>
+
+  <!-- Entry Foyer at Top of Stairs (X: 2.0 to 10.0, Y = 94.0 to 99.5) -->
+  <rect x="2.0" y="94" width="8.0" height="5.5" fill="#14243b" stroke="#00e5ff" stroke-width="0.2" stroke-dasharray="0.3,0.3"/>
+  <text x="4.2" y="97.0" fill="#00e5ff" font-size="0.75" font-weight="bold">ENTRY FOYER</text>
+
+  <!-- Dividing Wall Separating Foyer/Living from Front Master Suite (Y = 94.0 & X = 10.0) -->
+  <line x1="10.0" y1="94" x2="10.0" y2="109.5" stroke="#ffffff" stroke-width="0.33"/>
+  <line x1="10.0" y1="94" x2="18.5" y2="94" stroke="#ffffff" stroke-width="0.33"/>
+
+  <!-- Master Bedroom Suite (X: 10.0 to 18.5, Y: 94.0 to 109.5) -->
+  <text x="11.2" y="102" fill="#ffffff" font-size="0.85" font-weight="bold">MASTER SUITE</text>
+
+  <!-- Master En-Suite Bathroom (X: 18.5 to 26.0, Y: 94.0 to 102.0) -->
+  <rect x="18.5" y="94" width="7.5" height="8" fill="#0d1b2a" stroke="#ffffff" stroke-width="0.33"/>
+  <text x="19.5" y="98.5" fill="#ffffff" font-size="0.75" font-weight="bold">EN-SUITE</text>
+
+  <!-- ================= DOORS ================= -->
+  <!-- 1. Front 2nd Floor Entrance Door at Top of Stairs into Entry Foyer (Y = 94.0, X: 3.5 to 6.5) -->
+  <path d="M 3.5 94 L 3.5 91 A 3 3 0 0 1 6.5 94" fill="none" stroke="#00ff66" stroke-width="0.3"/>
+  <text x="2.2" y="92.5" fill="#00ff66" font-size="0.5" font-weight="bold">[2ND FL ENTRY]</text>
+
+  <!-- Foyer Transition Opening into Open Living Room (X: 7.0 to 10.0, Y = 94.0) -->
+  <path d="M 7.0 94 L 10.0 94" fill="none" stroke="#00e5ff" stroke-width="0.15" stroke-dasharray="0.3,0.3"/>
+
+  <!-- Master Suite Entry Door from Living/Foyer (X = 10.0, Y: 94.5 to 97.5) -->
+  <path d="M 10.0 94.5 L 13.0 94.5 A 3 3 0 0 1 10.0 97.5" fill="none" stroke="#00ff66" stroke-width="0.2"/>
+
+  <!-- Balcony Door from En-Suite (Y = 102.0, X: 21.0 to 24.0) -->
+  <path d="M 21.0 102 L 21.0 99 A 3 3 0 0 1 24.0 102" fill="none" stroke="#00ff66" stroke-width="0.25"/>
+  <text x="20.0" y="100.5" fill="#00ff66" font-size="0.55">[Balcony Door]</text>
+
+  <!-- Kitchen / Hallway Door to Upper Back Porch (Y = 57.0) -->
+  <path d="M 18.5 57 L 18.5 54 A 3 3 0 0 1 21.5 57" fill="none" stroke="#00ff66" stroke-width="0.25"/>
+  <text x="17.5" y="55.5" fill="#00ff66" font-size="0.55">[Porch Door]</text>
+
+  <!-- Split Bath 2 Door (X = 11.0, Y: 60.0 to 63.0) -->
+  <path d="M 11.0 60 L 11.0 57 A 3 3 0 0 0 8.0 60" fill="none" stroke="#00ff66" stroke-width="0.2"/>
+
+  <!-- Split Bedroom C Door (X = 11.0, Y: 69.0 to 72.0) -->
+  <path d="M 11.0 69 L 11.0 72 A 3 3 0 0 0 8.0 69" fill="none" stroke="#00ff66" stroke-width="0.2"/>
+
+  <!-- ================= WINDOWS ================= -->
+  <!-- Front Master Windows -->
+  <rect x="11.5" y="109.5" width="4.5" height="0.6" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  
+  <!-- Right Wall Windows -->
+  <rect x="25.9" y="42" width="0.6" height="3" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  <rect x="25.9" y="48" width="0.6" height="3" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  <rect x="25.9" y="64" width="0.6" height="3.5" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  <rect x="25.9" y="81" width="0.6" height="3" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  <rect x="25.9" y="88" width="0.6" height="3" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  
+  <!-- Left Wall Windows -->
+  <rect x="1.5" y="60.5" width="0.6" height="2.5" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  <rect x="1.5" y="69.5" width="0.6" height="2.5" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  <rect x="1.5" y="80" width="0.6" height="3.5" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+  <rect x="1.5" y="87" width="0.6" height="3.5" fill="#00e5ff" stroke="#ffffff" stroke-width="0.08"/>
+</svg>
+

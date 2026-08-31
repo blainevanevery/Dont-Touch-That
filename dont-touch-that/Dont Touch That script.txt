@@ -1,0 +1,146 @@
+[TITLE: Dont Touch That]
+
+[CHARACTERS:
+MainCharacter 
+Neighbor1(Damon) 
+Neighbor2(Ayla) 
+AiDemon0(
+AiDemon1(
+AiDemon2(
+AiDemon3(]
+
+[GAME FEATURES:
+
+(Modes:
+	Easy: AiDemon is randomly selected on start 
+of game(only 1 AiDemon per gameplay, possibility 
+to inflict damage based at 15%.(Base damage being 
+30hp on attack.(Can only attack twice in a row) 
+Increase activity and possibility to inflict damage 
+5.5% nightly)(AiDemon cannot attack during day time)
+	Medium: AiDemon is randomly selected on
+start of game(only 1 AiDemon with increased 
+possibility to inflict damage to 30%(Base damage 
+30hp on attack.(Can only attack twice in a row)
+Increase 4% nightly(Can only attack 3 times in a 
+row) Increase activity and possibility to inflict 
+damage 5% nightly)(AiDemon can inflict half damage 
+during day time)
+	Hard: Same as Medium, but now AiDemon can 
+play tricks on you(make you think it is another 
+AiDemon. It can also disturb salt lines and circles 
+so you need to be extra careful.)(After 3 days and 
+3 nights, AiDemon can inflict damage in day time.)
+
+(Objects to be found: 
+flashlight 
+batteries(14 batteries, one for each night, but 
+battery life length=85% of 1 night)
+camera(with nightvision)
+camera charger
+key0(MainCharacters Apartment Key) 
+key1(Damon&Layla's Apartment Key) 
+key2(footlocker key) 
+key3(basement key) 
+Book of the Damned(contains knowledge on the 4 
+AiDemons, how to summon and excorsize them, how 
+(not)to provoke them, what kind of herb is used to 
+ward them)
+salt 
+herb0(sage bundle) 
+herb1(rosemary bundle) 
+herb2(juniper bundle) 
+herb3(lavender bundle) 
+blessed water 
+spray bottle 
+crucifix 
+castiron bar 
+breaker box(in basement)
+	
+[PROLOGUE: 
+	You've just recently moved in this freshly
+remodeled apartment a few months ago. You've grown
+quite comfortable here. The neighbors upstairs 
+(Damon and Layla) are just as relaxed and kicked
+back as you are. 
+	They asked you to watch over their house
+while they went on vacation. Of course you gave
+them assurance that they were in good hands, it's 
+not like you can't. 
+		They never told you..] 
+
+
+[PART 1: 
+You're watching the upstairs apartment for 2 weeks. 
+The neighbors are taking part in some real occult 
+activities. They forgot to properly clean up after 
+a recent sacrifice, and you finished for them. 
+There is now something else in the apartments with 
+you. ] 
+[Objectives: 
+Meet neighbors for key; answer a knock at the door, 
+accept key from neighbor. 
+Clean house; after neighbor leaves suggest to self 
+"I should really clean this place up" , vacuum, 
+collect and do the dishes, smoke cigarette, take 
+garbage out. 
+Clean upstairs apartment; pick up clutter(weird 
+candles, bowl with dark liquid in it, cluster of 
+burnt herbs) along with pick up garbage, vacuum, 
+mop(weird marks on floor(left behind satanic 
+symbols and pentagram), do dishes, take garbage 
+out. 
+Go downstairs; make dinner, eat, take a shower, get 
+ready for bed. 
+(Get woke up in the middle of the night, e.g., 3:07
+a.m to the door slamming shut and footsteps running 
+out the back door, slamming the back door as well.) 
+Chase footsteps; follow the noise(it leads you to 
+the upstairs apartment) 
+(When you get to the upstairs door a very guttoral 
+and loud growl can be heard inside) ] 
+
+[PART 2:
+Go back downstairs for key; you left it in your 
+nightstand next to your bed. 
+Explore upstairs apartment; look for the source of 
+the footsteps and growl. 
+(Random sounds that don't sound proper lead you 
+around the house to different locatiions) 
+(You can call out to the noises, and might get a 
+response.)  
+Find their journals; 
+Find a key to a footlocker; inside is items that 
+resemble the clutter you picked up earlier. 
+(Just as you make the connection that this is the 
+rest of whatever you picked up earlier. Grabbing 
+a book that you see in the footlocker, you go to 
+open it... just as you grab the cover of the book. 
+You hesitate. Just as you do something whispers in 
+your ear~JUMPSCARE~ Dont Touch That!) ] 
+
+[PART 3: 
+Go back downstairs; read book. (Learn that it is a 
+demon, how to summon and send it back.)
+Sleep; or try to(the AiDemon will continue to 
+bother you until you set up precautions.) 
+Collect material to keep demon out of bedroom; salt, 
+blessed water, 
+Identify aiDemon; based on activity, and 
+MainCharacter provocation, learn what entity you 
+are dealing with.
+This can take anywhere from 3-10 nights to 
+identify which entity spawned in.]
+
+[PART 4:
+Dont die; #1 rule, survive as long as you can.
+Excorsize AiDemon; once identified collect 
+ingredients to excorsize demon.(AiDemon will try to 
+prevent this) ] 
+
+GOAL OF GAME: You either have to excorsize the 
+demon and rid your house of this negative entity, 
+or you survive long enough to give your neighbors 
+back their key and leave, leaving behind everything 
+in your house. Cleanse yourself and leave the 
+property.

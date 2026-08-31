@@ -1,0 +1,103 @@
+<!-- yard_blueprint.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -15 55 145" width="1200" height="2900" style="background-color: #0b1726; font-family: 'Courier New', monospace;">
+  <defs>
+    <pattern id="gridYard" width="1" height="1" patternUnits="userSpaceOnUse">
+      <path d="M 1 0 L 0 0 0 1" fill="none" stroke="#16273f" stroke-width="0.04"/>
+    </pattern>
+    <pattern id="majorGridYard" width="5" height="5" patternUnits="userSpaceOnUse">
+      <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#223a5e" stroke-width="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect x="-5" y="-15" width="55" height="145" fill="url(#gridYard)"/>
+  <rect x="-5" y="-15" width="55" height="145" fill="url(#majorGridYard)"/>
+
+  <!-- Title Block -->
+  <text x="0" y="-11" fill="#00e5ff" font-size="1.5" font-weight="bold">SITE &amp; YARD TOPOGRAPHY BLUEPRINT</text>
+  <text x="0" y="-8.8" fill="#88a0c0" font-size="0.75">LOT: 45'-0" x 120'-0" | SHORTENED DRIVEWAY (Y: 34.0 TO 120.0) | FRONT-LEFT HOUSE FOOTPRINT</text>
+
+  <!-- ================= PROPERTY BOUNDARY (45' x 120' AT X: 0 TO 45, Y: 0 TO 120) ================= -->
+  <rect x="0" y="0" width="45" height="120" fill="#0d201a" fill-opacity="0.35" stroke="#ffb703" stroke-width="0.4" stroke-dasharray="0.8,0.8"/>
+  <text x="1.5" y="3.5" fill="#ffb703" font-size="0.85" font-weight="bold">PROPERTY LINE (45' x 120')</text>
+
+  <!-- ================= SHORTENED RIGHT-SIDE DRIVEWAY (Y: 34.0 TO 120.0, MATCHING HOUSE + PORCH STAIRS) ================= -->
+  <!-- Driveway Pavement Surface -->
+  <rect x="31" y="34" width="12" height="86" fill="#1b2838" stroke="#88a0c0" stroke-width="0.25"/>
+  <text x="35" y="55" fill="#88a0c0" font-size="1.1" font-weight="bold" transform="rotate(90 35,55)">PAVED DRIVEWAY (12' WIDE)</text>
+  <text x="35" y="85" fill="#88a0c0" font-size="1.1" font-weight="bold" transform="rotate(90 35,85)">PAVED DRIVEWAY (12' WIDE)</text>
+  <!-- Driveway Curb Lines & End Boundary -->
+  <line x1="31" y1="34" x2="31" y2="120" stroke="#00e5ff" stroke-width="0.15" stroke-dasharray="0.4,0.4"/>
+  <line x1="43" y1="34" x2="43" y2="120" stroke="#00e5ff" stroke-width="0.15" stroke-dasharray="0.4,0.4"/>
+  <line x1="31" y1="34" x2="43" y2="34" stroke="#88a0c0" stroke-width="0.33"/>
+
+  <!-- ================= TERRAIN GRADE / CONTOUR LINES ================= -->
+  <!-- Grade Contour: EL -8.0' (Walk-out Backyard Grade at Y = 25.0 to 35.0) -->
+  <path d="M 0 28 Q 15 26 31 30" fill="none" stroke="#2ec4b6" stroke-width="0.2" stroke-dasharray="0.4,0.2"/>
+  <text x="1.5" y="27.2" fill="#2ec4b6" font-size="0.55">CONTOUR EL -8.0' (Walk-out Grade)</text>
+
+  <!-- Grade Contour: EL -6.0' (Lower Slope at Y = 45.0) -->
+  <path d="M 0 45 Q 15 43 31 47" fill="none" stroke="#2ec4b6" stroke-width="0.2" stroke-dasharray="0.4,0.2"/>
+  <text x="1.5" y="44.2" fill="#2ec4b6" font-size="0.55">CONTOUR EL -6.0'</text>
+
+  <!-- Grade Contour: EL -4.0' (Mid Foundation Slope at Y = 65.0) -->
+  <path d="M 0 65 Q 15 63 31 67" fill="none" stroke="#2ec4b6" stroke-width="0.2" stroke-dasharray="0.4,0.2"/>
+  <text x="1.5" y="64.2" fill="#2ec4b6" font-size="0.55">CONTOUR EL -4.0'</text>
+
+  <!-- Grade Contour: EL -2.0' (Upper Slope at Y = 85.0) -->
+  <path d="M 0 85 Q 15 83 31 87" fill="none" stroke="#2ec4b6" stroke-width="0.2" stroke-dasharray="0.4,0.2"/>
+  <text x="1.5" y="84.2" fill="#2ec4b6" font-size="0.55">CONTOUR EL -2.0'</text>
+
+  <!-- Grade Contour: EL 0.0' (Front Yard Finished Street Grade at Y = 110.0 to 120.0) -->
+  <path d="M 0 110 Q 15 109 31 111" fill="none" stroke="#2ec4b6" stroke-width="0.2" stroke-dasharray="0.4,0.2"/>
+  <text x="1.5" y="109.2" fill="#2ec4b6" font-size="0.55">CONTOUR EL 0.0' (Street / Front Grade)</text>
+
+  <!-- Slope Directional Indicator Arrows -->
+  <line x1="1.0" y1="105" x2="1.0" y2="40" stroke="#2ec4b6" stroke-width="0.25"/>
+  <polygon points="1.0,38 0.3,41 1.7,41" fill="#2ec4b6"/>
+  <text x="2.0" y="75" fill="#2ec4b6" font-size="0.65" transform="rotate(-90 2.0,75)">TERRAIN SLOPES DOWN ➔ REAR (EL 0' TO EL -8')</text>
+
+  <!-- ================= FRONT-LEFT HOUSE FOOTPRINT (25' x 71' AT X: 1.5 TO 26.5, Y: 39.0 TO 110.0) ================= -->
+  <!-- House Foundation Perimeter Footprint -->
+  <rect x="1.5" y="39" width="25" height="71" fill="#09131f" stroke="#4da6ff" stroke-width="0.5" stroke-dasharray="0.5,0.5"/>
+  <text x="5.5" y="74" fill="#4da6ff" font-size="1.2" font-weight="bold">HOUSE FOOTPRINT</text>
+  <text x="7.0" y="77" fill="#88a0c0" font-size="0.7">(25'-0" x 71'-0")</text>
+
+  <!-- Walk-out Storm Bilco Entrance (Rear Foundation: X: 11.5 to 16.5, Y: 33 to 39) -->
+  <rect x="11.5" y="33" width="5" height="6" fill="#102030" stroke="#00e5ff" stroke-width="0.3"/>
+  <line x1="14.0" y1="33" x2="14.0" y2="39" stroke="#00e5ff" stroke-width="0.15"/>
+  <text x="9.0" y="31.5" fill="#00e5ff" font-size="0.5" font-weight="bold">WALK-OUT ENTRY</text>
+
+  <!-- Raised Back Porch Platform Footprint (Y = 34.0 to 39.0, X: 9.5 to 18.5) -->
+  <rect x="9.5" y="34" width="9" height="5" fill="#14243b" stroke="#00e5ff" stroke-width="0.25" stroke-dasharray="0.3,0.3"/>
+  <text x="10.3" y="36.8" fill="#00e5ff" font-size="0.55" font-weight="bold">RAISED PORCH</text>
+
+  <!-- Exterior Stairs from Porch Down to Driveway (X: 18.5 to 26.5, Y: 34.0 to 38.0) -->
+  <rect x="18.5" y="34" width="8" height="4" fill="#0a1424" stroke="#ffffff" stroke-width="0.25"/>
+  <line x1="20.1" y1="34" x2="20.1" y2="38" stroke="#ffffff" stroke-width="0.12"/>
+  <line x1="21.7" y1="34" x2="21.7" y2="38" stroke="#ffffff" stroke-width="0.12"/>
+  <line x1="23.3" y1="34" x2="23.3" y2="38" stroke="#ffffff" stroke-width="0.12"/>
+  <line x1="24.9" y1="34" x2="24.9" y2="38" stroke="#ffffff" stroke-width="0.12"/>
+  <text x="19.5" y="36.3" fill="#00e5ff" font-size="0.45" font-weight="bold">DN ➔</text>
+
+  <!-- Backyard Paved Walkway Connecting Rear Steps / Walk-Out to Driveway End -->
+  <path d="M 11.5 33 L 31 33 L 31 39 L 26.5 39 L 26.5 38 L 18.5 38 L 18.5 39 L 11.5 39 Z" fill="#14243b" stroke="#88a0c0" stroke-width="0.15" stroke-dasharray="0.2,0.2"/>
+  <text x="22.5" y="32.2" fill="#88a0c0" font-size="0.45">REAR PATH</text>
+
+  <!-- Front Walkway (Front Porch to Driveway & Street: X: 18.5 to 31.0, Y: 110.0 to 115.0) -->
+  <rect x="18.5" y="110" width="12.5" height="5" fill="#14243b" stroke="#88a0c0" stroke-width="0.15" stroke-dasharray="0.2,0.2"/>
+  <text x="20" y="113.2" fill="#88a0c0" font-size="0.5">FRONT WALKWAY</text>
+
+  <!-- ================= SITE DIMENSIONS ================= -->
+  <!-- Lot Width (45'-0") -->
+  <line x1="0" y1="123" x2="45" y2="123" stroke="#ffb703" stroke-width="0.2"/>
+  <line x1="0" y1="121" x2="0" y2="125" stroke="#ffb703" stroke-width="0.2"/>
+  <line x1="45" y1="121" x2="45" y2="125" stroke="#ffb703" stroke-width="0.2"/>
+  <text x="16.5" y="126.5" fill="#ffb703" font-size="1.5">45'-0" LOT WIDTH</text>
+
+  <!-- Lot Depth (120'-0") -->
+  <line x1="-2" y1="0" x2="-2" y2="120" stroke="#ffb703" stroke-width="0.2"/>
+  <line x1="-3.5" y1="0" x2="-0.5" y2="0" stroke="#ffb703" stroke-width="0.2"/>
+  <line x1="-3.5" y1="120" x2="-0.5" y2="120" stroke="#ffb703" stroke-width="0.2"/>
+  <text x="-3.5" y="65" fill="#ffb703" font-size="1.5" transform="rotate(-90 -3.5,65)">120'-0" LOT DEPTH</text>
+</svg>
+
