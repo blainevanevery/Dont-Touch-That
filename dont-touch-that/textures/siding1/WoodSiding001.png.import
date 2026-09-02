@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd2l01si5xsrv"
-path="res://.godot/imported/1st_floor_plan.svg-b137efbb5f90d3ef8faa14e59324d260.ctex"
+uid="uid://dgsto0nbgdgpv"
+path="res://.godot/imported/WoodSiding001.png-bd0a4ea63513f977f96a17f5e142e2fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blueprints/1st_floor_plan.svg"
-dest_files=["res://.godot/imported/1st_floor_plan.svg-b137efbb5f90d3ef8faa14e59324d260.ctex"]
+source_file="res://textures/siding1/WoodSiding001.png"
+dest_files=["res://.godot/imported/WoodSiding001.png-bd0a4ea63513f977f96a17f5e142e2fb.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

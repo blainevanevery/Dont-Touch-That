@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd2l01si5xsrv"
-path="res://.godot/imported/1st_floor_plan.svg-b137efbb5f90d3ef8faa14e59324d260.ctex"
+uid="uid://ddn0m4hnv3ieb"
+path="res://.godot/imported/basement_blueprint.svg-66d7fb78cfff7b3155bfa42183005ab6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blueprints/1st_floor_plan.svg"
-dest_files=["res://.godot/imported/1st_floor_plan.svg-b137efbb5f90d3ef8faa14e59324d260.ctex"]
+source_file="res://blueprints/basement_blueprint.svg"
+dest_files=["res://.godot/imported/basement_blueprint.svg-66d7fb78cfff7b3155bfa42183005ab6.ctex"]
 
 [params]
 

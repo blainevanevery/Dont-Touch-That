@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd2l01si5xsrv"
-path="res://.godot/imported/1st_floor_plan.svg-b137efbb5f90d3ef8faa14e59324d260.ctex"
+uid="uid://be8oac2wdsu2w"
+path="res://.godot/imported/1st_floor_blueprint.svg-be351a26f81c2172ab9c4f86e079b21b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blueprints/1st_floor_plan.svg"
-dest_files=["res://.godot/imported/1st_floor_plan.svg-b137efbb5f90d3ef8faa14e59324d260.ctex"]
+source_file="res://blueprints/1st_floor_blueprint.svg"
+dest_files=["res://.godot/imported/1st_floor_blueprint.svg-be351a26f81c2172ab9c4f86e079b21b.ctex"]
 
 [params]
 
