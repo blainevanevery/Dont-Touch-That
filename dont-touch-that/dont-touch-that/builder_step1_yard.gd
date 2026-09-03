@@ -13,7 +13,7 @@ func create_pbr_material(albedo_path: String, normal_path: String, roughness_pat
 	if normal_path != "" and ResourceLoader.exists(normal_path):
 		mat.normal_enabled = true
 		mat.normal_texture = load(normal_path)
-	if roughness_path != "" and ResourceLoader.exists(roughness_path):
+	if  roughness_path != "" and ResourceLoader.exists(roughness_path):
 		mat.roughness_enabled = true
 		mat.roughness_texture = load(roughness_path)
 	
@@ -21,6 +21,20 @@ func create_pbr_material(albedo_path: String, normal_path: String, roughness_pat
 	mat.uv1_scale = uv_scale
 	mat.uv1_triplanar_sharpness = 10.0
 	return mat
+	
+	if albedo_path != "" and ResourceLoader.exists(albedo_path):
+		mat.albedo_texture = load(albedo_path)
+	if normal_path != "" and ResourceLoader.exists(normal_path):
+		mat.normal_enabled = true
+		mat.normal_texture = load(normal_path)
+	if roughness_path != "" and ResourceLoader.exists(roughness_path):
+		mat.roughness_enabled = true
+		mat.normal_texture = load(roughness_path)
+
+		mat.uv1_triplaner = true
+		mat.uv1_scale = uv_scale
+		mat.uv1_triplanar_sharpness = 10.0
+		return mat
 
 func build_yard():
 	var grass_mat = create_pbr_material("", "", "", Color(0.22, 0.52, 0.18), Vector3(0.1, 0.1, 0.1))    
@@ -36,15 +50,16 @@ func build_yard():
 	asphalt_mat.roughness = 0.75
 
 	var get_yard_height = func(z: float) -> float:
-		var t = clampf((110.0 - z) / (110.0 - 39.0), 0.0, 1.0)
-		return lerpf(0.0, -2.6, t)
+		var t = clampf((120.0 - z) / 120.0, 0.0, 1.0)
+		var smooth_t = t * t * (3.0 - 2.0 * t)
+		return lerpf(0.0, -4.5, smooth_t)
 
-	# 1. High-Poly Expanded Yard Surface Mesh (X: -3.0 to 45.0, 0.25ft High-Res Spacing)
+	# 1. Expanded Yard Surface Mesh (X: -3.0 to 45.0, 0.5ft Spacing)
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	st.set_material(grass_mat)
 
-	var step_size = 0.25
+	var step_size = 0.5
 	var nx = int(48.0 / step_size)
 	var nz = int(120.0 / step_size)
 
@@ -55,7 +70,7 @@ func build_yard():
 			var z0 = float(j) * step_size
 			var z1 = float(j + 1) * step_size
 
-			# 27-ft House Excavation Footprint (X: 0.0 to 27.0, Z: 39.0 to 110.0)
+			# Expanded 27-ft House Excavation Footprint (X: 0.0 to 27.0, Z: 39.0 to 110.0)
 			var inside_house0 = (x0 >= 0.0 and x0 <= 27.0 and z0 >= 39.0 and z0 <= 110.0)
 			var inside_house1 = (x1 >= 0.0 and x1 <= 27.0 and z1 >= 39.0 and z1 <= 110.0)
 
@@ -111,6 +126,7 @@ func build_yard():
 	st_cut.set_uv(Vector2(0, 1)); st_cut.add_vertex(Vector3(0.0, -8.0, 110.0))
 
 	# Rear-Left Bilco Dirt Floor (X: 1.0 to 6.0, Z: 33.0 to 39.0)
+	# Side walls connecting down to -8.0 from foundation (Y=2.5) down to ground (Y=0.0)
 	# Left Side Wall (X = 1.0)
 	st_cut.set_normal(Vector3.RIGHT)
 	st_cut.add_vertex(Vector3(1.0, -8.0, 39.0))
@@ -142,7 +158,7 @@ func build_yard():
 	st_cut.add_vertex(Vector3(6.0, -8.0, 39.0))
 	st_cut.add_vertex(Vector3(1.0, -8.0, 39.0))
 
-	var r_segs = 120
+	var r_segs = 60
 	for s in range(r_segs):
 		var za = 39.0 + (float(s) / float(r_segs)) * 71.0
 		var zb = 39.0 + (float(s + 1) / float(r_segs)) * 71.0
@@ -173,7 +189,7 @@ func build_yard():
 	st_drive.begin(Mesh.PRIMITIVE_TRIANGLES)
 	st_drive.set_material(asphalt_mat)
 
-	var drive_segs = 160
+	var drive_segs = 80
 	for d in range(drive_segs):
 		var za = 34.0 + (float(d) / float(drive_segs)) * 86.0
 		var zb = 34.0 + (float(d + 1) / float(drive_segs)) * 86.0

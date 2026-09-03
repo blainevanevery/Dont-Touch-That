@@ -1,0 +1,76 @@
+<!-- yard_blueprint.svg / yard_topography.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -15 55 145" width="1200" height="2900">
+  <defs>
+    <!-- 1ft Fine Grid -->
+    <pattern id="gridYard" width="1" height="1" patternUnits="userSpaceOnUse">
+      <path d="M 1 0 L 0 0 0 1" fill="none" stroke="#e0e0e0" stroke-width="0.05"/>
+    </pattern>
+    <!-- 5ft Major Grid -->
+    <pattern id="majorGridYard" width="5" height="5" patternUnits="userSpaceOnUse">
+      <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#b0b0b0" stroke-width="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Clean White Canvas -->
+  <rect x="-5" y="-15" width="55" height="145" fill="#ffffff"/>
+  <rect x="-5" y="-15" width="55" height="145" fill="url(#gridYard)"/>
+  <rect x="-5" y="-15" width="55" height="145" fill="url(#majorGridYard)"/>
+
+  <!-- Title Block -->
+  <text x="0" y="-11" fill="#000000" font-size="1.5" font-family="sans-serif" font-weight="bold">SITE TOPOGRAPHY &amp; LOT PLAN</text>
+  <text x="0" y="-8.8" fill="#555555" font-size="0.75" font-family="sans-serif">LOT: 45'-0" x 120'-0" | FRONT PORCH: FRONT-RIGHT (X: 18.5 TO 26.5, Y: 94.0 TO 110.0)</text>
+
+  <!-- ================= PROPERTY BOUNDARY (45' x 120' AT X: 0 TO 45, Y: 0 TO 120) ================= -->
+  <rect x="0" y="0" width="45" height="120" fill="none" stroke="#000000" stroke-width="0.5"/>
+  <text x="1.5" y="3.5" fill="#000000" font-size="0.85" font-family="sans-serif" font-weight="bold">PROPERTY LINE (45' x 120')</text>
+
+  <!-- Front Street & Rear Lot Line Markers -->
+  <line x1="0" y1="0" x2="45" y2="0" stroke="#000000" stroke-width="0.6"/>
+  <text x="1.5" y="-1.5" fill="#444444" font-size="0.75" font-family="sans-serif">REAR LOT LINE (Z = 0.0, BACKYARD GRADE Y = -3.5')</text>
+  <line x1="0" y1="120" x2="45" y2="120" stroke="#000000" stroke-width="0.6"/>
+  <text x="1.5" y="122.5" fill="#444444" font-size="0.75" font-family="sans-serif">FRONT STREET CURB LINE (Z = 120.0, GRADE Y = 0.0')</text>
+
+  <!-- ================= SHORTENED RIGHT-SIDE DRIVEWAY (Y: 34.0 TO 120.0, WIDTH: 12.0) ================= -->
+  <rect x="31" y="34" width="12" height="86" fill="#f4f4f4" stroke="#000000" stroke-width="0.4"/>
+  <line x1="31" y1="34" x2="43" y2="34" stroke="#000000" stroke-width="0.4"/>
+  <line x1="31" y1="34" x2="31" y2="120" stroke="#000000" stroke-width="0.2" stroke-dasharray="0.6,0.6"/>
+  <line x1="43" y1="34" x2="43" y2="120" stroke="#000000" stroke-width="0.2" stroke-dasharray="0.6,0.6"/>
+  <text x="32" y="77" fill="#555555" font-size="0.75" font-family="sans-serif">PAVED DRIVEWAY (12' x 86')</text>
+
+  <!-- ================= HOUSE EXCAVATION CUTOUT FOOTPRINT (LEFT SIDE: X: 1.5 TO 26.5) ================= -->
+  <rect x="1.5" y="39" width="25" height="71" fill="#ebebeb" stroke="#000000" stroke-width="0.6"/>
+  <text x="6.5" y="74.5" fill="#333333" font-size="0.9" font-family="sans-serif" font-weight="bold">HOUSE EXCAVATION PIT (25' x 71')</text>
+  <text x="8.0" y="77.0" fill="#666666" font-size="0.7" font-family="sans-serif">BASEMENT GRADE Y = -8.0'</text>
+
+  <!-- ================= FRONT COVERED PORCH (FRONT-RIGHT: X: 18.5 TO 26.5, Y: 94.0 TO 110.0) ================= -->
+  <rect x="18.5" y="94" width="8" height="16" fill="#fafafa" stroke="#000000" stroke-width="0.3"/>
+  <line x1="18.5" y1="110" x2="26.5" y2="110" stroke="#000000" stroke-width="0.4" stroke-dasharray="0.4,0.4"/>
+  <line x1="26.5" y1="94" x2="26.5" y2="110" stroke="#000000" stroke-width="0.4" stroke-dasharray="0.4,0.4"/>
+  <circle cx="25.8" cy="94.8" r="0.45" fill="#000000"/>
+  <circle cx="25.8" cy="102.0" r="0.45" fill="#000000"/>
+  <circle cx="25.8" cy="109.2" r="0.45" fill="#000000"/>
+  <text x="19.0" y="102" fill="#555555" font-size="0.6" font-family="sans-serif">FRONT PORCH</text>
+
+  <!-- ================= EXTENDED REAR PORCH (FLUSH TO RIGHT WALL X = 26.5) ================= -->
+  <rect x="9.5" y="33.5" width="17" height="5.5" fill="#fafafa" stroke="#000000" stroke-width="0.4"/>
+  <line x1="9.5" y1="33.5" x2="26.5" y2="33.5" stroke="#000000" stroke-width="0.4" stroke-dasharray="0.4,0.4"/>
+  <line x1="9.5" y1="33.5" x2="9.5" y2="39.0" stroke="#000000" stroke-width="0.4" stroke-dasharray="0.4,0.4"/>
+  <text x="14.0" y="36.5" fill="#555555" font-size="0.6" font-family="sans-serif">EXTENDED REAR PORCH (17' x 5.5')</text>
+
+  <!-- Driveway Connection Stairs Strip -->
+  <rect x="26.5" y="34" width="4.5" height="4" fill="none" stroke="#000000" stroke-width="0.3"/>
+  <line x1="27.4" y1="34" x2="27.4" y2="38" stroke="#000000" stroke-width="0.2"/>
+  <line x1="28.3" y1="34" x2="28.3" y2="38" stroke="#000000" stroke-width="0.2"/>
+  <line x1="29.2" y1="34" x2="29.2" y2="38" stroke="#000000" stroke-width="0.2"/>
+  <line x1="30.1" y1="34" x2="30.1" y2="38" stroke="#000000" stroke-width="0.2"/>
+
+  <!-- ================= TOPOGRAPHY GRADE TRANSITION CONTOURS ================= -->
+  <line x1="0" y1="110" x2="45" y2="110" stroke="#777777" stroke-width="0.25" stroke-dasharray="1.0,1.0"/>
+  <text x="1.5" y="109" fill="#555555" font-size="0.65" font-family="sans-serif">TOP OF SLOPE: Y = 0.0'</text>
+
+  <line x1="0" y1="74.5" x2="45" y2="74.5" stroke="#999999" stroke-width="0.2" stroke-dasharray="1.0,1.0"/>
+  <text x="1.5" y="73.5" fill="#777777" font-size="0.65" font-family="sans-serif">MID SLOPE CONTOUR: Y = -1.75'</text>
+
+  <line x1="0" y1="39" x2="45" y2="39" stroke="#777777" stroke-width="0.25" stroke-dasharray="1.0,1.0"/>
+  <text x="1.5" y="38" fill="#555555" font-size="0.65" font-family="sans-serif">TOE OF SLOPE: Y = -3.5'</text>
+</svg>

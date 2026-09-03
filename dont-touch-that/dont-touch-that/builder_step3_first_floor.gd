@@ -4,7 +4,6 @@ extends MeshInstance3D
 var mat_hardwood: StandardMaterial3D
 var mat_siding: StandardMaterial3D
 var mat_drywall: StandardMaterial3D
-var mat_deck: StandardMaterial3D
 
 func _ready():
 	print("=== STEP 3 PIPELINE: FINALIZING STAIRS, RAILINGS, AND CUBBY ===")
@@ -12,94 +11,59 @@ func _ready():
 	install_doors()
 
 func create_pbr_material(albedo_path: String, normal_path: String, roughness_path: String, tint: Color, uv_scale: Vector3) -> StandardMaterial3D:
-	var mat = StandardMaterial3D.new()
-	mat.albedo_color = tint
-	
-	if albedo_path != "" and ResourceLoader.exists(albedo_path):
-		mat.albedo_texture = load(albedo_path)
-	
-	if normal_path != "" and ResourceLoader.exists(normal_path):
-		mat.normal_enabled = true
-		mat.normal_texture = load(normal_path)
-	if roughness_path != "" and ResourceLoader.exists(roughness_path):
-		mat.roughness_enabled = true 
-		mat.roughness_texture = load(roughness_path)
+		var mat = StandardMaterial3D.new()
+		mat.albedo_color = tint
+		
+		if albedo_path != "" and ResourceLoader.exists(albedo_path):
+			mat.albedo_enables = load(albedo_path)
+		
+		if normal_path != "" and ResourceLoader.exists(normal_path):
+			mat.normal_enabled = true
+			mat.normal_texture = load(normal_path)
+		if roughness_path != "" and ResourceLoader.exists(roughness_path):
+			mat.roughness_enabled = true 
+			mat.roughness_texture = load(roughness_path)
 
-	mat.uv1_triplanar = true
-	mat.uv1_scale = uv_scale
-	mat.uv1_triplanar_sharpness = 10.0
-	return mat
+		mat.uv1_triplanar = true
+		mat.uv1_scale = uv_scale
+		mat.uv1_triplaner_sharpness = 10.0
+		return mat
 
-func add_quad(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3, expected_normal: Vector3, mat: StandardMaterial3D):
+func add_quad(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3, _expected_normal: Vector3, mat: StandardMaterial3D):
 	st.set_material(mat)
 	
-	# Explicit mathematical normal calculation (CCW: a -> b -> c)
+	# Explicit mathematical normal calculation
 	st.set_smooth_group(0)
-	var calc_normal = (b - a).cross(c - a).normalized()
-	var face_normal = calc_normal if calc_normal.length_squared() > 0.01 else expected_normal
+	var face_normal = (b - a).cross(c - a).normalized()
 	st.set_normal(face_normal)
 
-	# Triangle 1: a -> b -> c (Standard CCW winding)
+	# Triangle 1: a -> c -> b (Reversed Winding)
 	st.set_uv(Vector2(0, 0)); st.add_vertex(a)
+	st.set_uv(Vector2(1, 1)); st.add_vertex(c)
 	st.set_uv(Vector2(1, 0)); st.add_vertex(b)
-	st.set_uv(Vector2(1, 1)); st.add_vertex(c)
 
-	# Triangle 2: a -> c -> d (Standard CCW winding)
+	# Triangle 2: a -> d -> c (Reversed Winding)
 	st.set_normal(face_normal)
 	st.set_uv(Vector2(0, 0)); st.add_vertex(a)
-	st.set_uv(Vector2(1, 1)); st.add_vertex(c)
 	st.set_uv(Vector2(0, 1)); st.add_vertex(d)
+	st.set_uv(Vector2(1, 1)); st.add_vertex(c)
 
-
-func add_cylinder_highpoly(st: SurfaceTool, center_bottom: Vector3, radius: float, height: float, sides: int, mat: StandardMaterial3D):
-	st.set_material(mat)
-	var segs = maxi(8, sides)
-	var top_center = center_bottom + Vector3(0, height, 0)
-	for i in range(segs):
-		var a1 = float(i) * TAU / float(segs)
-		var a2 = float(i + 1) * TAU / float(segs)
-		var p1_b = center_bottom + Vector3(cos(a1) * radius, 0, sin(a1) * radius)
-		var p2_b = center_bottom + Vector3(cos(a2) * radius, 0, sin(a2) * radius)
-		var p1_t = p1_b + Vector3(0, height, 0)
-		var p2_t = p2_b + Vector3(0, height, 0)
-		var side_norm = Vector3(cos((a1 + a2) * 0.5), 0, sin((a1 + a2) * 0.5)).normalized()
-		# Side Quad (CCW: p1_b -> p2_b -> p2_t -> p1_t)
-		add_quad(st, p1_b, p2_b, p2_t, p1_t, side_norm, mat)
-		# Top Cap (CCW: top_center -> p2_t -> p1_t)
-		add_quad(st, top_center, p2_t, p1_t, top_center, Vector3.UP, mat)
-		# Bottom Cap (CCW: center_bottom -> p1_b -> p2_b)
-		add_quad(st, center_bottom, p1_b, p2_b, center_bottom, Vector3.DOWN, mat)
 
 func add_spindle_railing_x(st, x1, x2, z, y_base, height, mats):
-	var m = mats.get("default", mat_deck if mat_deck else mat_hardwood)
-	# Bottom Rail
-	add_box(st, x1, x2, y_base + 0.15, y_base + 0.35, z - 0.1, z + 0.1, mats)
-	# Molded Top Handrail
-	add_box(st, x1, x2, y_base + height - 0.2, y_base + height, z - 0.12, z + 0.12, mats)
-	# Newel End Posts (high-poly 8-sided cylinders)
-	add_cylinder_highpoly(st, Vector3(x1, y_base, z), 0.12, height + 0.15, 12, m)
-	add_cylinder_highpoly(st, Vector3(x2, y_base, z), 0.12, height + 0.15, 12, m)
-	# Spindles (8-sided cylinders spaced along X)
-	var count = int(abs(x2 - x1) / 0.35)
+	add_box(st, x1, x2, y_base + 0.2, y_base + 0.35, z - 0.1, z + 0.1, mats)
+	add_box(st, x1, x2, y_base + height - 0.15, y_base + height, z - 0.1, z + 0.1, mats)
+	var count = int(abs(x2 - x1) / 0.4)
 	for i in range(count + 1):
-		var sx = minf(x1, x2) + (i * 0.35)
-		add_cylinder_highpoly(st, Vector3(sx, y_base + 0.35, z), 0.05, height - 0.55, 8, m)
+		var sx = minf(x1, x2) + (i * 0.4)
+		add_box(st, sx - 0.06, sx + 0.06, y_base + 0.35, y_base + height - 0.15, z - 0.06, z + 0.06, mats)
 
 func add_spindle_railing_z(st, z1, z2, x, y_base, height, mats):
-	var m = mats.get("default", mat_deck if mat_deck else mat_hardwood)
-	# Bottom Rail
-	add_box(st, x - 0.1, x + 0.1, y_base + 0.15, y_base + 0.35, z1, z2, mats)
-	# Molded Top Handrail
-	add_box(st, x - 0.12, x + 0.12, y_base + height - 0.2, y_base + height, z1, z2, mats)
-	# Newel End Posts (high-poly 8-sided cylinders)
-	add_cylinder_highpoly(st, Vector3(x, y_base, z1), 0.12, height + 0.15, 12, m)
-	add_cylinder_highpoly(st, Vector3(x, y_base, z2), 0.12, height + 0.15, 12, m)
-	# Spindles (8-sided cylinders spaced along Z)
-	var count = int(abs(z2 - z1) / 0.35)
+	add_box(st, x - 0.1, x + 0.1, y_base + 0.2, y_base + 0.35, z1, z2, mats)
+	add_box(st, x - 0.1, x + 0.1, y_base + height - 0.15, y_base + height, z1, z2, mats)
+	var count = int(abs(z2 - z1) / 0.4)
 	for i in range(count + 1):
-		var sz = minf(z1, z2) + (i * 0.35)
-		add_cylinder_highpoly(st, Vector3(x, y_base + 0.35, sz), 0.05, height - 0.55, 8, m)
-
+		var sz = minf(z1, z2) + (i * 0.4)
+		add_box(st, x - 0.06, x + 0.06, y_base + 0.35, y_base + height - 0.15, sz - 0.06, sz + 0.06, mats)
 func add_box(st: SurfaceTool, x1: float, x2: float, y1: float, y2: float, z1: float, z2: float, mats: Dictionary):
 	var x_min = minf(x1, x2)
 	var x_max = maxf(x1, x2)
@@ -124,12 +88,12 @@ func add_box(st: SurfaceTool, x1: float, x2: float, y1: float, y2: float, z1: fl
 	var get_mat = func(face: String) -> StandardMaterial3D:
 		return mats[face] if mats.has(face) else mats.get("default", mat_drywall)
 
-	add_quad(st, v0, v1, v2, v3, Vector3(0, 0, -1), get_mat.call("south")) # South Face (-Z)
-	add_quad(st, v5, v4, v7, v6, Vector3(0, 0, 1), get_mat.call("north"))  # North Face (+Z)
-	add_quad(st, v4, v0, v3, v7, Vector3(-1, 0, 0), get_mat.call("west"))  # West Face (-X)
-	add_quad(st, v1, v5, v6, v2, Vector3(1, 0, 0), get_mat.call("east"))   # East Face (+X)
-	add_quad(st, v3, v2, v6, v7, Vector3(0, 1, 0), get_mat.call("top"))    # Top Face (+Y)
-	add_quad(st, v4, v5, v1, v0, Vector3(0, -1, 0), get_mat.call("bottom"))# Bottom Face (-Y)
+	add_quad(st, v1, v0, v3, v2, Vector3(0, 0, -1), get_mat.call("south")) # South Face (-Z)
+	add_quad(st, v4, v5, v6, v7, Vector3(0, 0, 1), get_mat.call("north"))  # North Face (+Z)
+	add_quad(st, v0, v4, v7, v3, Vector3(-1, 0, 0), get_mat.call("west"))  # West Face (-X)
+	add_quad(st, v5, v1, v2, v6, Vector3(1, 0, 0), get_mat.call("east"))   # East Face (+X)
+	add_quad(st, v7, v6, v2, v3, Vector3(0, 1, 0), get_mat.call("top"))    # Top Face (+Y)
+	add_quad(st, v0, v1, v5, v4, Vector3(0, -1, 0), get_mat.call("bottom"))# Bottom Face (-Y)
 
 func add_wall_x(st: SurfaceTool, x1: float, x2: float, z1: float, z2: float, mats: Dictionary):
 	add_box(st, x1, x2, 0.0, 9.0, z1, z2, mats)
@@ -158,7 +122,6 @@ func build_first_floor():
 	mat_hardwood = create_pbr_material("", "", "", Color(0.62, 0.48, 0.35), Vector3(1.0, 1.0, 1.0))
 	mat_siding = create_pbr_material("", "", "", Color(0.76, 0.696, 0.522, 1.0), Vector3(1.0, 1.0, 1.0))
 	mat_drywall = create_pbr_material("", "", "", Color(0.753, 0.753, 0.705, 1.0), Vector3(1.0, 1.0, 1.0))
-	mat_deck = create_pbr_material("res://textures/weathered_wood.jpg", "", "", Color(0.76, 0.60, 0.42), Vector3(0.3, 0.3, 0.3))
 	
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -166,54 +129,39 @@ func build_first_floor():
 	var m_int = {"default": mat_drywall, "top": mat_hardwood}
 	var m_floor = {"default": mat_drywall, "top": mat_hardwood}
 	var m_ext_front = create_pbr_material("res://textures/horizontal_siding.jpg", "", "", Color(0.92, 0.91, 0.87), Vector3(0.5, 0.2, 0.5))
-	var m_deck = {"default": mat_deck}
+	var m_deck = create_pbr_material("res://textures/weathered_wood.jpg", "", "", Color(0.76, 0.60, 0.42), Vector3(0.3, 0.3, 0.3))
 
-	# Complete Solid Floor Slab (X: 0.0 to 27.0, Z: 39.0 to 110.0)
-	add_box(st, 0.0, 27.0, -0.5, 0.0, 39.0, 110.0, m_floor)
+	# Floor Gap Patch: Make sure there's no overlap
+	add_box(st, 11.2, 27.0, -0.5, 0.0, 39.0, 110.0, m_floor) # Main right
+	add_box(st, 0.0, 11.2, -0.5, 0.0, 45.6, 110.0, m_floor) # Front section
+	add_box(st, 0.0, 11.2, -0.5, 0.0, 39.0, 39.5, m_floor) # Rear strip
 	
 	# Back Deck
 	add_box(st, 9.5, 22.0, -0.5, 0.0, 34.0, 39.0, m_deck)
 
-	# --- RIGHT FRONT PORCH DECK PLATFORM & INSET PORCH (X: 18.0 to 27.0, Z: 94.0 to 110.0) ---
-	# Recessed / Front Porch Deck Floor on the Right Side
-	add_box(st, 18.0, 27.0, -0.5, 0.0, 94.0, 110.0, m_deck)
+	# --- FRONT PORCH LANDING (Z: 110.0 to 114.0) ---
 	
-	# Extended Front Porch Landing & Main Steps (X: 18.5 to 25.5, Z: 110.0 to 114.5)
-	# Landing Extension
-	add_box(st, 18.0, 26.5, -0.5, 0.0, 110.0, 111.0, m_deck)
-	# Main Front Porch Steps Down to Grade
-	var right_step_count = 5
-	for i in range(right_step_count):
-		var z_s = 111.0 + (i * 0.7)
-		var z_e = z_s + 0.7
-		var y_t = -(float(i + 1) / float(right_step_count)) * 3.0
-		var y_b = -3.0
-		# Step tread & riser
-		add_box(st, 19.0, 25.5, y_b, y_t, z_s, z_e, m_deck)
-		# Solid Side Stringer Walls flanking main steps
-		add_box(st, 18.6, 19.0, -3.0, y_t, z_s, z_e, m_deck)
-		add_box(st, 25.5, 25.9, -3.0, y_t, z_s, z_e, m_deck)
+	# --- FRONT ENTRY SOLID STEPS DOWN TO GRADE (Y: 0.0 down to -3.5) ---
+	var step_count = 5
+	for i in range(step_count):
+			var z_start = 109.5 + (i * 0.91)
+			var z_end = z_start + 0.91
+			var y_top = -(i + 1) * 0.6
+			var y_bottom = -3.5
+			add_box(st, 1.0, 7.0, y_bottom, y_top, z_start, z_end, m_deck)
 
-	# --- RIGHT FRONT PORCH SPINDLE RAILINGS ---
-	# Outer Right Edge Railing along recessed porch
-	add_spindle_railing_z(st, 94.0, 110.0, 26.8, 0.0, 3.0, m_deck)
-	# Front Steps Handrails
-	add_spindle_railing_z(st, 110.0, 114.5, 18.8, -3.0, 3.0, m_deck)
-	add_spindle_railing_z(st, 110.0, 114.5, 25.7, -3.0, 3.0, m_deck)
-
-	# --- BACK PORCH STEPS DOWN TO GRADE (EXITING RIGHT) ---
-	# Extended by 3 extra step treads/risers (total 8 steps) with solid stringers
-	var back_step_count = 8 
+	# --- BACK PORCH STEPS DOWN TO GRADE (EXITING RIGHT) ---var back_step_count = 5
+	var back_step_count = 5 
 	for i in range(back_step_count):
-		var x_start = 22.0 + (i * 1.0)
-		var x_end = x_start + 1.0
-		var y_top = -(i + 1) * 0.7 # reaches Y = -5.6 relative to first floor (world Y = -2.6)
-		var y_bottom = -5.6
-		# Step tread & riser grounded to base
-		add_box(st, x_start, x_end, y_bottom, y_top, 34.0, 39.0, m_deck)
-		# Solid stringer side walls flanking steps
-		add_box(st, x_start, x_end, y_bottom, y_top, 33.6, 34.0, m_deck)
-		add_box(st, x_start, x_end, y_bottom, y_top, 39.0, 39.4, m_deck)
+			var x_start = 22.0 + (i * 1.0)
+			var x_end = x_start + 1.0
+			var y_top = -(i + 1) * 0.7
+			var y_bottom = y_top - 0.1
+			add_box(st, x_start, x_end, y_bottom, y_top, 34.0, 39.0, m_deck)
+
+	# --- FRONT PORCH RAILINGS ---
+	add_spindle_railing_z(st, 110.0, 114.0, 1.1, 0.0, 3.0, m_deck)
+	add_spindle_railing_z(st, 110.0, 114.0, 6.9, 0.0, 3.0, m_deck)
 
 	# --- L-SHAPED BACK DECK SPINDLE RAILINGS ---
 	# Left side of deck
@@ -221,9 +169,8 @@ func build_first_floor():
 	# Front side of deck (facing the backyard)
 	add_spindle_railing_x(st, 9.5, 22.0, 34.1, 0.0, 3.0, m_deck)
 
-	# Raised Awning above Front Porch (Right Side)
-	st.set_materials(m_ext_front)
-	add_box(st, 18.0, 26.5, 7.0, 7.8, 109.5, 113.0, {})
+	# Raised Awning above Front Door
+	add_box(st, 0.0, 8.0, 7.0, 7.8, 110.0, 114.0, m_ext_front)
 
 	# 2. SOLID EXTERIOR SHELL (Y: 0.0 to 9.0)
 	var ext_left_mats = {"default": mat_drywall, "west": mat_siding}
@@ -343,56 +290,36 @@ func build_first_floor():
 
 	# 4. GROUNDED STAIRCASE GEOMETRY
 	var stair_mats = {"default": mat_hardwood}
-	
-	# --- Rear U-Turn Switchback Staircase (X: 0.5 to 11.2, Z: 39.5 to 45.6) ---
-	# Lower Flight 1 (ascending from living area X=11.2 down/up to mid-landing X=4.5)
+	# --- Rear U-Turn Switchback Staircase ---
 	const FLIGHT1_STEPS := 6
 	for s in range(FLIGHT1_STEPS):
 		var ts = float(s) / float(FLIGHT1_STEPS - 1)
+		# STAIR SHADING FIX: Ensure positive widths
 		var sx_max = lerpf(11.2, 4.5, ts)
 		var sx_min = sx_max - 0.7
 		var sy = lerpf(0.0, 4.55, ts)
-		# Step tread/riser grounded from y=0.0 up to step top
 		add_box(st, sx_min, sx_max, 0.0, sy, 39.5, 42.3, stair_mats)
-		# Solid side support / stringer wall along open inner edge (Z: 42.3 to 42.7)
-		add_box(st, sx_min, sx_max, 0.0, sy, 42.3, 42.7, m_int)
 
-	# Mid Landing (fully supported from y=0.0 up to landing top y=4.55)
 	add_box(st, 0.5, 4.5, 0.0, 4.55, 39.5, 45.6, stair_mats)
 
-	# Upper Flight 2 (ascending from mid-landing X=4.5 up to 2nd floor level X=11.2)
 	const FLIGHT2_STEPS := 6
 	for s in range(FLIGHT2_STEPS):
 		var ts = float(s) / float(FLIGHT2_STEPS - 1)
+		# STAIR SHADING FIX: Ensure positive widths
 		var sx_min = lerpf(4.5, 11.2, ts)
 		var sx_max = sx_min + 0.7
 		var sy = lerpf(4.55, 9.0, ts)
-		# Step tread/riser
 		add_box(st, sx_min, sx_max, 4.55, sy, 42.7, 45.6, stair_mats)
-		# Solid side support / stringer wall enclosing the stair side down to y=0.0
-		add_box(st, sx_min, sx_max, 0.0, sy, 42.3, 42.7, m_int)
 
-	# Spindle railings along open stairwell edges & mid-landing on the first floor
-	add_spindle_railing_x(st, 0.5, 4.5, 45.4, 4.55, 3.0, m_deck)
-	add_spindle_railing_x(st, 4.5, 11.2, 42.5, 4.55, 3.0, m_deck)
-
-	# --- Front Interior Staircase (X: 0.8 to 6.2, Z: 94.5 to 109.0) ---
-	# Fully grounded steps from y=0.0 up to step tops with solid side stringer walls
+	# --- Flipped Front Staircase ---
 	const FRONT_STEPS := 10
 	for s in range(FRONT_STEPS):
 		var ts = float(s) / float(FRONT_STEPS - 1)
+		# STAIR SHADING FIX: Ensure positive depths
 		var sz_max = lerpf(109.0, 94.5, ts)
 		var sz_min = sz_max - 0.8
 		var sy = lerpf(0.0, 9.0, ts)
-		# Grounded step tread & riser (y=0.0 up to sy)
 		add_box(st, 0.8, 6.2, 0.0, sy, sz_min, sz_max, stair_mats)
-		# Solid stepped stringer / side support wall enclosing the open right side (X: 6.2 to 6.6)
-		add_box(st, 6.2, 6.6, 0.0, sy, sz_min, sz_max, m_int)
-		# Solid side support wall on left side against wall (X: 0.5 to 0.8)
-		add_box(st, 0.5, 0.8, 0.0, sy, sz_min, sz_max, m_int)
-
-	# Spindle railing along open outer edge of front staircase (matching deck railings)
-	add_spindle_railing_z(st, 94.5, 109.0, 6.4, 0.0, 3.0, m_deck)
 
 	st.index()
 	

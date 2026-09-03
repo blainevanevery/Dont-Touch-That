@@ -38,49 +38,119 @@ func build_watertight_basement():
 	add_quad.call(Vector3(0.0, 2.5, 110.0), Vector3(27.0, 2.5, 110.0), Vector3(0.0, 2.5, 109.3), Vector3(27.0, 2.5, 109.3), Vector3.UP) # Front Top
 	add_quad.call(Vector3(0.0, 2.5, 110.0), Vector3(0.0, 2.5, 39.0), Vector3(0.7, 2.5, 110.0), Vector3(0.7, 2.5, 39.0), Vector3.UP) # Left Top
 	add_quad.call(Vector3(26.3, 2.5, 110.0), Vector3(26.3, 2.5, 39.0), Vector3(27.0, 2.5, 110.0), Vector3(27.0, 2.5, 39.0), Vector3.UP) # Right Top
-
-	# Rear Top Caps (Splits around Rear-Left Bilco Channel at X: 1.0 to 6.0)
-	add_quad.call(Vector3(0.0, 2.5, 39.7), Vector3(1.0, 2.5, 39.7), Vector3(0.0, 2.5, 39.0), Vector3(1.0, 2.5, 39.0), Vector3.UP) # Rear Far-Left Top Cap
-	add_quad.call(Vector3(6.0, 2.5, 39.7), Vector3(27.0, 2.5, 39.7), Vector3(6.0, 2.5, 39.0), Vector3(27.0, 2.5, 39.0), Vector3.UP) # Rear Main Top Cap (X: 6.0 to 27.0)
+	add_quad.call(Vector3(0.0, 2.5, 39.7), Vector3(27.0, 2.5, 39.7), Vector3(0.0, 2.5, 39.0), Vector3(27.0, 2.5, 39.0), Vector3.UP) # Full Rear Top Cap (X: 0.0 to 27.0)
 
 	# Exterior Wall Faces (Y: 2.5 to -8.0)
 	add_quad.call(Vector3(0.0, 2.5, 110.0), Vector3(27.0, 2.5, 110.0), Vector3(0.0, -8.0, 110.0), Vector3(27.0, -8.0, 110.0), Vector3.FORWARD) # Front Ext
 	add_quad.call(Vector3(0.0, 2.5, 39.0), Vector3(0.0, 2.5, 110.0), Vector3(0.0, -8.0, 39.0), Vector3(0.0, -8.0, 110.0), Vector3.LEFT) # Left Ext
 	add_quad.call(Vector3(27.0, 2.5, 110.0), Vector3(27.0, 2.5, 39.0), Vector3(27.0, -8.0, 110.0), Vector3(27.0, -8.0, 39.0), Vector3.RIGHT) # Right Ext
 
-	# Rear Exterior Walls with CCW Winding & Vector3.BACK normal (Z = 39.0)
-	add_quad.call(Vector3(1.0, 2.5, 39.0), Vector3(0.0, 2.5, 39.0), Vector3(1.0, -8.0, 39.0), Vector3(0.0, -8.0, 39.0), Vector3.BACK) # Far Left Ext
-	add_quad.call(Vector3(27.0, 2.5, 39.0), Vector3(6.0, 2.5, 39.0), Vector3(27.0, -8.0, 39.0), Vector3(6.0, -8.0, 39.0), Vector3.BACK) # Main Rear Ext (X: 6.0 to 27.0)
+	# Full Solid Rear Exterior Wall (Z = 39.0, X: 0.0 to 27.0, Y: 2.5 down to -8.0)
+	add_quad.call(Vector3(27.0, 2.5, 39.0), Vector3(0.0, 2.5, 39.0), Vector3(27.0, -8.0, 39.0), Vector3(0.0, -8.0, 39.0), Vector3.BACK)
 
 	# Interior Wall Faces (Y: 2.5 to -7.6)
 	add_quad.call(Vector3(26.3, 2.5, 109.3), Vector3(0.7, 2.5, 109.3), Vector3(26.3, -7.6, 109.3), Vector3(0.7, -7.6, 109.3), Vector3.BACK) # Front Int
 	add_quad.call(Vector3(0.7, 2.5, 109.3), Vector3(0.7, 2.5, 39.7), Vector3(0.7, -7.6, 109.3), Vector3(0.7, -7.6, 39.7), Vector3.RIGHT) # Left Int
 	add_quad.call(Vector3(26.3, 2.5, 39.7), Vector3(26.3, 2.5, 109.3), Vector3(26.3, -7.6, 39.7), Vector3(26.3, -7.6, 109.3), Vector3.LEFT) # Right Int
 
-	# Rear Interior Walls (Z = 39.7)
-	add_quad.call(Vector3(1.0, 2.5, 39.7), Vector3(0.7, 2.5, 39.7), Vector3(1.0, -7.6, 39.7), Vector3(0.7, -7.6, 39.7), Vector3.FORWARD) # Far Left Int
-	add_quad.call(Vector3(26.3, 2.5, 39.7), Vector3(6.0, 2.5, 39.7), Vector3(26.3, -7.6, 39.7), Vector3(6.0, -7.6, 39.7), Vector3.FORWARD) # Main Rear Int
-
-	# Inner Channel Walls around Bilco Entry (Z: 39.0 to 39.7, X: 1.0 to 6.0)
-	add_quad.call(Vector3(1.0, 2.5, 39.7), Vector3(1.0, 2.5, 39.0), Vector3(1.0, -7.6, 39.7), Vector3(1.0, -8.0, 39.0), Vector3.RIGHT) # Left side of channel
-	add_quad.call(Vector3(6.0, 2.5, 39.0), Vector3(6.0, 2.5, 39.7), Vector3(6.0, -8.0, 39.0), Vector3(6.0, -7.6, 39.7), Vector3.LEFT) # Right side of channel
+	# Full Solid Rear Interior Wall (Z = 39.7, X: 0.7 to 26.3, Y: 2.5 down to -7.6, facing +Z / FORWARD into basement)
+	add_quad.call(Vector3(26.3, 2.5, 39.7), Vector3(0.7, 2.5, 39.7), Vector3(26.3, -7.6, 39.7), Vector3(0.7, -7.6, 39.7), Vector3.FORWARD)
+	# Additional Interior Rear Surface (Z = 39.0, facing +Z / FORWARD for double-sided coverage)
+	add_quad.call(Vector3(27.0, 2.5, 39.0), Vector3(0.0, 2.5, 39.0), Vector3(27.0, -7.6, 39.0), Vector3(0.0, -7.6, 39.0), Vector3.FORWARD)
 
 	# Basement Floor Plane (Thickness Y: -7.6 to -8.0)
 	add_quad.call(Vector3(0.7, -7.6, 109.3), Vector3(26.3, -7.6, 109.3), Vector3(0.7, -7.6, 39.7), Vector3(26.3, -7.6, 39.7), Vector3.UP) # Inside Floor Top
 	add_quad.call(Vector3(0.0, -8.0, 39.0), Vector3(27.0, -8.0, 39.0), Vector3(0.0, -8.0, 110.0), Vector3(27.0, -8.0, 110.0), Vector3.DOWN) # True Bottom Foundation Slab
 
 	# --- CONCRETE BASEMENT EXIT STAIRS (X: 1.0 to 6.0, Z: 31.0 to 39.0) ---
+	# Capped to end flush at subfloor level (Y = 0.0)
 	var num_steps = 15
+	var step_depth = (39.0 - 31.0) / float(num_steps)
+	var step_height = (0.0 - (-7.6)) / float(num_steps)
 	for i in range(num_steps):
-		var z_start = 39.0 - (float(i) * (8.0 / num_steps))
-		var z_end = 39.0 - (float(i + 1) * (8.0 / num_steps))
-		var y_bottom = -7.6
-		var y_top = -7.6 + (float(i + 1) * (10.1 / num_steps)) # reaches Y = 2.5
+		var z_high = 39.0 - (float(i) * step_depth)
+		var z_low = 39.0 - (float(i + 1) * step_depth)
+		var y_tread = -7.6 + (float(i + 1) * step_height) # top step reaches Y = 0.0 flush
+		var y_riser_bottom = -7.6 + (float(i) * step_height)
 		
-		# Step Top face
-		add_quad.call(Vector3(1.0, y_top, z_start), Vector3(6.0, y_top, z_start), Vector3(1.0, y_top, z_end), Vector3(6.0, y_top, z_end), Vector3.UP)
-		# Step Front face
-		add_quad.call(Vector3(1.0, y_top, z_end), Vector3(6.0, y_top, z_end), Vector3(1.0, y_top - (10.1 / num_steps), z_end), Vector3(6.0, y_top - (10.1 / num_steps), z_end), Vector3.BACK)
+		# Step Top horizontal tread face (Y = y_tread, Z: z_low to z_high, X: 1.0 to 6.0)
+		add_quad.call(Vector3(1.0, y_tread, z_high), Vector3(6.0, y_tread, z_high), Vector3(1.0, y_tread, z_low), Vector3(6.0, y_tread, z_low), Vector3.UP)
+		# Step Front vertical riser face (Z = z_low, Y: y_riser_bottom to y_tread, facing -Z / BACK towards grade)
+		add_quad.call(Vector3(6.0, y_tread, z_low), Vector3(1.0, y_tread, z_low), Vector3(6.0, y_riser_bottom, z_low), Vector3(1.0, y_riser_bottom, z_low), Vector3.BACK)
+
+	# --- BASEMENT STAIRS SOLID SIDE SUPPORT / RETAINING WALLS (Z: 31.0 to 39.0, Y: -7.6 to 2.5) ---
+	# Left Retaining Wall (X: 0.6 to 1.0)
+	# Top Cap
+	add_quad.call(Vector3(0.6, 2.5, 39.0), Vector3(1.0, 2.5, 39.0), Vector3(0.6, 2.5, 31.0), Vector3(1.0, 2.5, 31.0), Vector3.UP)
+	# Inside Face (facing stairs / +X)
+	add_quad.call(Vector3(1.0, 2.5, 31.0), Vector3(1.0, 2.5, 39.0), Vector3(1.0, -7.6, 31.0), Vector3(1.0, -7.6, 39.0), Vector3.RIGHT)
+	# Outside Face (facing left / -X)
+	add_quad.call(Vector3(0.6, 2.5, 39.0), Vector3(0.6, 2.5, 31.0), Vector3(0.6, -7.6, 39.0), Vector3(0.6, -7.6, 31.0), Vector3.LEFT)
+	# Front End Cap (Z = 31.0)
+	add_quad.call(Vector3(0.6, 2.5, 31.0), Vector3(1.0, 2.5, 31.0), Vector3(0.6, -7.6, 31.0), Vector3(1.0, -7.6, 31.0), Vector3.BACK)
+
+	# Right Retaining Wall (X: 6.0 to 6.4)
+	# Top Cap
+	add_quad.call(Vector3(6.0, 2.5, 39.0), Vector3(6.4, 2.5, 39.0), Vector3(6.0, 2.5, 31.0), Vector3(6.4, 2.5, 31.0), Vector3.UP)
+	# Inside Face (facing stairs / -X)
+	add_quad.call(Vector3(6.0, 2.5, 31.0), Vector3(6.0, 2.5, 39.0), Vector3(6.0, -7.6, 31.0), Vector3(6.0, -7.6, 39.0), Vector3.LEFT)
+	# Outside Face (facing right / +X)
+	add_quad.call(Vector3(6.4, 2.5, 39.0), Vector3(6.4, 2.5, 31.0), Vector3(6.4, -7.6, 39.0), Vector3(6.4, -7.6, 31.0), Vector3.RIGHT)
+	# Front End Cap (Z = 31.0)
+	add_quad.call(Vector3(6.0, 2.5, 31.0), Vector3(6.4, 2.5, 31.0), Vector3(6.0, -7.6, 31.0), Vector3(6.4, -7.6, 31.0), Vector3.BACK)
+
+	# --- SPINDLE SAFETY RAILINGS ON BASEMENT STAIR RETAINING WALLS ---
+	var add_box_direct = func(bx1: float, bx2: float, by1: float, by2: float, bz1: float, bz2: float):
+		var x_min = minf(bx1, bx2)
+		var x_max = maxf(bx1, bx2)
+		var y_min = minf(by1, by2)
+		var y_max = maxf(by1, by2)
+		var z_min = minf(bz1, bz2)
+		var z_max = maxf(bz1, bz2)
+		if is_equal_approx(x_min, x_max) or is_equal_approx(y_min, y_max) or is_equal_approx(z_min, z_max):
+			return
+		# South Face (-Z)
+		add_quad.call(Vector3(x_max, y_min, z_min), Vector3(x_min, y_min, z_min), Vector3(x_max, y_max, z_min), Vector3(x_min, y_max, z_min), Vector3.BACK)
+		# North Face (+Z)
+		add_quad.call(Vector3(x_min, y_min, z_max), Vector3(x_max, y_min, z_max), Vector3(x_min, y_max, z_max), Vector3(x_max, y_max, z_max), Vector3.FORWARD)
+		# West Face (-X)
+		add_quad.call(Vector3(x_min, y_min, z_min), Vector3(x_min, y_min, z_max), Vector3(x_min, y_max, z_min), Vector3(x_min, y_max, z_max), Vector3.LEFT)
+		# East Face (+X)
+		add_quad.call(Vector3(x_max, y_min, z_max), Vector3(x_max, y_min, z_min), Vector3(x_max, y_max, z_max), Vector3(x_max, y_max, z_min), Vector3.RIGHT)
+		# Top Face (+Y)
+		add_quad.call(Vector3(x_min, y_max, z_max), Vector3(x_max, y_max, z_max), Vector3(x_min, y_max, z_min), Vector3(x_max, y_max, z_min), Vector3.UP)
+		# Bottom Face (-Y)
+		add_quad.call(Vector3(x_min, y_min, z_min), Vector3(x_max, y_min, z_min), Vector3(x_min, y_min, z_max), Vector3(x_max, y_min, z_max), Vector3.DOWN)
+
+	var add_cylinder_direct = func(center_b: Vector3, rad: float, h: float, segs: int):
+		var num_segs = maxi(8, segs)
+		var top_c = center_b + Vector3(0, h, 0)
+		for i in range(num_segs):
+			var a1 = float(i) * TAU / float(num_segs)
+			var a2 = float(i + 1) * TAU / float(num_segs)
+			var p1_b = center_b + Vector3(cos(a1) * rad, 0, sin(a1) * rad)
+			var p2_b = center_b + Vector3(cos(a2) * rad, 0, sin(a2) * rad)
+			var p1_t = p1_b + Vector3(0, h, 0)
+			var p2_t = p2_b + Vector3(0, h, 0)
+			var side_norm = Vector3(cos((a1 + a2) * 0.5), 0, sin((a1 + a2) * 0.5)).normalized()
+			add_quad.call(p2_b, p1_b, p2_t, p1_t, side_norm)
+			add_quad.call(top_c, p1_t, top_c, p2_t, Vector3.UP)
+			add_quad.call(center_b, p2_b, center_b, p1_b, Vector3.DOWN)
+
+	var add_spindle_railing = func(z1: float, z2: float, rx: float, y_base: float, r_height: float):
+		add_box_direct.call(rx - 0.1, rx + 0.1, y_base + 0.15, y_base + 0.35, z1, z2)
+		add_box_direct.call(rx - 0.12, rx + 0.12, y_base + r_height - 0.2, y_base + r_height, z1, z2)
+		# Newel End Posts (8+ sides)
+		add_cylinder_direct.call(Vector3(rx, y_base, z1), 0.12, r_height + 0.15, 12)
+		add_cylinder_direct.call(Vector3(rx, y_base, z2), 0.12, r_height + 0.15, 12)
+		var count = int(abs(z2 - z1) / 0.35)
+		for s_idx in range(count + 1):
+			var sz = minf(z1, z2) + (s_idx * 0.35)
+			add_cylinder_direct.call(Vector3(rx, y_base + 0.35, sz), 0.05, r_height - 0.55, 8)
+
+	# Left side safety railing (along X = 0.8) and Right side safety railing (along X = 6.2) on top of walls (Y = 2.5)
+	add_spindle_railing.call(31.0, 39.0, 0.8, 2.5, 3.0)
+	add_spindle_railing.call(31.0, 39.0, 6.2, 2.5, 3.0)
 
 	st.index()
 	st.generate_normals()
